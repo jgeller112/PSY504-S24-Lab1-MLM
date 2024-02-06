@@ -1,0 +1,226 @@
+---
+title: "Lab 1 - Multilevel Models"
+output: 
+  tufte::tufte_html:
+    css: 
+    tufte_variant: "envisioned"
+    highlight: github-dark
+    fig_height: 10
+    toc: true
+    toc_depth: 1
+execute: 
+  message: false
+  warning: false
+format: 
+  html:
+    code-fold: true
+    code-overflow: wrap
+engine: knitr
+---
+
+# Lab 1: MLM
+
+Today's lab uses data from a study conducted by Coyne et al. (2019), which examined the impact of a high-quality, evidence-based vocabulary instruction intervention in kindergarten. The data consists of 1,428 students who were nested in 233 clusters or classrooms (`clu_id`).
+
+In the sample of at-risk youth in the classroom (*N* = 6), half were allocated to treatment and the other half to control. The treatment group received supplemental small-group vocabulary instruction in addition to the whole-group instruction, while the control group received only whole-group vocabulary instruction. Since the observations were not independent (due to students being nested within classrooms), the researchers needed to account for this in their analysis.
+
+The main question that the researchers aimed to answer was whether the supplemental small-group kindergarten vocabulary instruction intervention increased students' knowledge of the vocabulary words taught in the intervention. To measure vocabulary knowledge, the researchers used an ETW (ETW_SpringK) assessment, which evaluated students' ability to explain the meaning of a given word. The assessment was administered after the intervention concluded, in the spring of kindergarten. In the sample, ETW scores ranged from 0 to 52 (the maximum score), with a mean of 13.65 and a standard deviation of 11.10. To answer the research question, the researchers used two fixed effects and their interaction: `TRT` (1 = treatment and 0 = control) and PPVT (Peabody Picture Vocabulary Test, which measures students' vocabulary before the intervention; `PPVT_FallK`).
+
+> Coyne, M. D., McCoach, D. B., Ware, S., Austin, C. R., Loftus-Rattan, S. M., & Baker, D. L. (2019). Racing Against the Vocabulary Gap: Matthew Effects in Early Vocabulary Instruction and Intervention. *Exceptional Children*, *85*(2), 163--179. <https://doi.org/10.1177/0014402918789162>
+
+## Load packages
+
+```{r}
+# fill in packages you need as you go here
+
+```
+
+## Load data
+
+```{r}
+# read in data file 
+
+```
+
+# Lab 1
+
+## Data structure
+
+1.  What are the level 1 and level 2 variables in this study? How many units are in level 1? Level 2? Are the fixed effects at level 1 or level 2?
+
+```{r}
+
+```
+
+2.  Deviation code (0.5, -0.5) the treatment variable
+
+```{r}
+
+#deviation code the TRT var
+
+```
+
+3.  Group mean center **`PPVT_Fallk`**
+
+```{r}
+
+#within-clustering centering
+
+```
+
+4.  Create two nicely looking visualizations: One for the relationship between PPTV and EWR and one for the relationship between TRT and EWR. Make sure you plot the between-cluster (class) variability when you graph these (given how many clusters there are, randomly sample 20 of them to plot).
+
+```{r}
+# fig 1
+```
+
+```{r}
+# fig 2
+
+```
+
+## Model comparisons
+
+5.  Fit an unconditional means (null model)
+
+::: callout-tip
+make sure you load `lmerTest` to get *p*-values
+:::
+
+```{r}
+
+```
+
+> What is the ICC? Calculate it by hand from the output.
+
+```{r}
+
+```
+
+> Use the `icc` function in `easystats` to calculate the icc
+
+```{r}
+
+```
+
+> Is multilevel modeling warranted here? Why?
+
+6.  Build up from the last model. Fit a model that includes all level 1 variables (no interaction)
+
+```{r}
+
+```
+
+7.  Fit a model that includes the fixed interaction between the level-1 variables
+
+```{r}
+
+```
+
+8.  Compare the main effects and interaction models. Which model is the best?
+
+```{r}
+
+```
+
+9.  Use the best model from above and fit a model that adds random slopes for `TRT`
+
+```{r}
+
+```
+
+10. Now create a model with a random slope for treatment and PPVT scores. This will be our maximal model.
+
+```         
+::: callout-warning
+We could include a random slope for the interaction between the two, but we only have 6 students per classroom and makes our model too complex.
+:::
+```
+
+```{r}
+
+```
+
+11. Compare the random slopes for `TRT` model to the the random slopes for treatment and `PPVT`model. Which one is better?
+
+```{r}
+
+```
+
+> Take a look at the maximal model output. What is the warning message?
+
+```{r}
+
+
+```
+
+> Why do you think we are getting that message? How can we get rid of the warning?
+
+## Model interpretation
+
+12. What is the best model?
+
+13. Using the best model, examine the fixed effects. Please interpret these effects/coefs in a sentence or two. You can use whatever method you would like (e.g., t-tests or LRT). Follow these up with the appropriate tests (e.g., simple slopes analysis if interaction is significant)
+
+```{r}
+# fit the best model and output a nice summary table of results. 
+
+```
+
+14. Evaluate the variance components of your model. Explain what each means
+
+```{r}
+
+```
+
+## Model fit
+
+15. Calculate the conditional and marginal pseudo-$R^2$ of the model
+
+```{r}
+
+```
+
+16. Calculate the semi-$R^2$ for the `PPVT` variable using the `partR2` function from `partR2` package
+
+```{r}
+
+```
+
+17. Calculate Cohen's $d$ for the treatment effect
+
+```{r}
+
+```
+
+18. Visualize the random intercepts and slopes in your model
+
+```{r}
+
+```
+
+## Assumptions
+
+19. Check model assumptions with `check_model`. Do any of the assumptions appear to be violated?
+
+```{r}
+
+```
+
+## Table
+
+20. Create a table with a summary of your model information
+
+```{r}
+```
+
+## Visualization
+
+21. Visualize the interaction between `TRT` and `PPVT` score on ETW (I would check out the `interactions` or `ggeffects` packages. They have some nice features for plotting interactions.)
+
+```{r}
+```
+
+## Reporting Results
+
+22. Write-up the results of your MLM model incorporating the above information. This write-up should resemble what you would find in a published paper. You can use the textbook for guidance and the `report` function from `easystats`
