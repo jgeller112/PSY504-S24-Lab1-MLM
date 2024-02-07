@@ -103,7 +103,9 @@ make sure you load `lmerTest` to get *p*-values
 
 ```
 
-> Is multilevel modeling warranted here? Why?
+> Is multilevel modeling warranted here?
+>
+> What does the ICC mean?
 
 6.  Build up from the last model. Fit a model that includes all level 1 variables (no interaction)
 
