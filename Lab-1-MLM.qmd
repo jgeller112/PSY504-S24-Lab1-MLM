@@ -46,7 +46,7 @@ The main question that the researchers aimed to answer was whether the supplemen
 
 ## Data structure
 
-1.  What are the level 1 and level 2 variables in this study? How many units are in Level 1? Level 2? Are the fixed effects at Level 1 or Level 2?
+1.  What are the Level 1 and Level 2 variables in this study? How many units are in Level 1? Level 2? Are the fixed effects at Level 1 or Level 2?
 
 ```{r}
 
