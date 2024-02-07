@@ -46,7 +46,7 @@ The main question that the researchers aimed to answer was whether the supplemen
 
 ## Data structure
 
-1.  What are the level 1 and level 2 variables in this study? How many units are in level 1? Level 2? Are the fixed effects at level 1 or level 2?
+1.  What are the level 1 and level 2 variables in this study? How many units are in Level 1? Level 2? Are the fixed effects at Level 1 or Level 2?
 
 ```{r}
 
@@ -160,7 +160,7 @@ We could include a random slope for the interaction between the two, but we only
 
 12. What is the best model?
 
-13. Using the best model, examine the fixed effects. Please interpret these effects/coefs in a sentence or two. You can use whatever method you would like (e.g., t-tests or LRT). Follow these up with the appropriate tests (e.g., simple slopes analysis if interaction is significant)
+13. Using the best model, examine the fixed effects. Please interpret these effects/coefs in a sentence or two. You can use whatever method you would like (e.g., t-tests or LRT). Follow these up with the appropriate tests (e.g., simple slopes analysis if interaction is significant).
 
 ```{r}
 # fit the best model and output a nice summary table of results. 
